@@ -93,7 +93,7 @@ Setting the kernel parameter depends on what bootloader you are using. Complete 
 
 1. Get the **nvidia.hook** -file from this repository
    - `cd ~`
-   - `wget https://raw.githubusercontent.com/korvahannu/arch-nvidia-drivers-installation-guide/main/nvidia.hook`
+   - `wget https://raw.githubusercontent.com/tjb2640/arch-nvidia-drivers-installation-guide/main/nvidia.hook`
 2. Open the file with your preferred editor.
    - `nano nvidia.hook`
 3. Find the line that says **Target=nvidia**.
@@ -102,6 +102,14 @@ Setting the kernel parameter depends on what bootloader you are using. Complete 
 5. Save the file with _CTRL+S_ and close nano with _CTRL+X_
 6. Move the file to **/etc/pacman.d/hooks/** with: `sudo mkdir -p /etc/pacman.d/hooks/ && sudo mv ./nvidia.hook /etc/pacman.d/hooks/`
 
-## Step 4: Reboot and enjoy!
+## Step 4: Wayland support
+1. Edit the **environment** file:
+   - `nano /etc/environment`
+2. At the end of the file, append these lines:
+   - `__NV_PRIME_RENDER_OFFLOAD=1`
+   - `__GLX_VENDOR_LIBRARY_NAME=nvidia`
+3. Save the file with _CTRL+S_ and close nano with _CTRL+X_
+
+## Step 5: Reboot and enjoy!
 
 You can now safely reboot and enjoy the proprietary NVIDIA drivers. If you have any problems check the Arch Linux Wiki or the forums for common pitfalls and questions.
